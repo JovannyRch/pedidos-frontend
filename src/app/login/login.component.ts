@@ -42,6 +42,8 @@ export class LoginComponent {
         .subscribe(
           (response: any) => {
             if (response?.status === 1) {
+              localStorage.setItem('user', response.user.name);
+              localStorage.setItem('user_id', response.user.id);
               this.router.navigate(['/home']);
             } else {
               alert('Usuario no encontrado');

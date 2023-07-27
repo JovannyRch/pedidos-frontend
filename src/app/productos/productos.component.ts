@@ -11,6 +11,8 @@ export class ProductosComponent {
   constructor(private router: Router, private http: HttpClient) {}
 
   cerrarSesion() {
+    localStorage.removeItem('user');
+    localStorage.removeItem('user_id');
     this.router.navigate(['/login']);
   }
 }

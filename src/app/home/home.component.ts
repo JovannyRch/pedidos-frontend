@@ -37,6 +37,8 @@ export class HomeComponent {
   }
 
   cerrarSesion() {
+    localStorage.removeItem('user');
+    localStorage.removeItem('user_id');
     this.router.navigate(['/login']);
   }
 }

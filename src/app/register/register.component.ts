@@ -8,12 +8,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-  name: string = 'jovanny';
+  /* name: string = 'jovanny';
   email: string = 'jovannyrch@gmail.com';
   address: string = 'address';
   phone: string = 'phone';
   password: string = '123qwe';
   confirmPassword: string = '123qwe';
+  errorMessage: string = ''; */
+
+  name: string = '';
+  email: string = '';
+  address: string = '';
+  phone: string = '';
+  password: string = '';
+  confirmPassword: string = '';
   errorMessage: string = '';
 
   constructor(private router: Router, private http: HttpClient) {}

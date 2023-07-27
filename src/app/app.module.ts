@@ -20,6 +20,13 @@ import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PedidosComponent } from './pedidos/pedidos.component';
 import { ProductosComponent } from './productos/productos.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDialogModule } from '@angular/material/dialog';
+import { UserFormDialogComponent } from './user-form-dialog/user-form-dialog.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -29,6 +36,8 @@ import { ProductosComponent } from './productos/productos.component';
     HomeComponent,
     PedidosComponent,
     ProductosComponent,
+    UsuariosComponent,
+    UserFormDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +54,11 @@ import { ProductosComponent } from './productos/productos.component';
     MatListModule,
     MatCardModule,
     MatProgressSpinnerModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
