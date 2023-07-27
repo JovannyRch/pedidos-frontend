@@ -27,6 +27,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { UserFormDialogComponent } from './user-form-dialog/user-form-dialog.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { ProductFormDialogComponentComponent } from './product-form-dialog-component/product-form-dialog-component.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { MatInputModule } from '@angular/material/input';
     ProductosComponent,
     UsuariosComponent,
     UserFormDialogComponent,
+    ProductFormDialogComponentComponent,
   ],
   imports: [
     BrowserModule,
