@@ -1,34 +1,78 @@
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.css'],
 })
 export class RegisterComponent {
-  name: string = '';
-  email: string = '';
-  address: string = '';
-  phone: string = '';
-  password: string = '';
-  confirmPassword: string = '';
+  name: string = 'jovanny';
+  email: string = 'jovannyrch@gmail.com';
+  address: string = 'address';
+  phone: string = 'phone';
+  password: string = '123qwe';
+  confirmPassword: string = '123qwe';
+  errorMessage: string = '';
+
+  constructor(private router: Router, private http: HttpClient) {}
 
   onSubmit() {
-    // Aquí puedes agregar la lógica para enviar el formulario al servidor o procesar los datos del registro.
-    // Por ejemplo, puedes hacer una solicitud HTTP a un servidor para guardar los datos del usuario.
-    console.log('Nombre:', this.name);
-    console.log('Correo electrónico:', this.email);
-    console.log('Dirección:', this.address);
-    console.log('Teléfono:', this.phone);
-    console.log('Contraseña:', this.password);
-    console.log('Confirmar Contraseña:', this.confirmPassword);
+    this.errorMessage = '';
 
-    // Realiza aquí la validación de la confirmación de contraseña
+    //Valid all fields
+    if (
+      this.name === '' ||
+      this.email === '' ||
+      this.address === '' ||
+      this.phone === '' ||
+      this.password === '' ||
+      this.confirmPassword === ''
+    ) {
+      this.errorMessage = 'Todos los campos son obligatorios.';
+      return;
+    }
+
     if (this.password !== this.confirmPassword) {
-      console.log('La confirmación de contraseña no coincide.');
+      this.errorMessage = 'La confirmación de contraseña no coincide.';
     } else {
-      // Procesa el registro o envía los datos al servidor
-      console.log('Registro exitoso.');
+      const userData = {
+        name: this.name,
+        email: this.email,
+        password: this.password,
+      };
+
+      const detailsData = {
+        user_id: 0,
+        address: this.address,
+        phone_number: this.phone,
+      };
+
+      this.http
+        .post('http://localhost:8000/api/users', userData)
+        .subscribe((response: any) => {
+          if (response?.status === 1) {
+            const userId = response.user_id;
+            detailsData.user_id = userId;
+
+            this.http
+              .post('http://localhost:8000/api/udetails', detailsData)
+              .subscribe((response: any) => {
+                if (response?.status === 1) {
+                  alert('Usuario registrado correctamente');
+                  this.router.navigate(['/login']);
+                } else {
+                  this.errorMessage = 'Errror al registrar usuario';
+                }
+              });
+
+            //Create
+          } else {
+            this.errorMessage =
+              response?.message || 'Errror al registrar usuario';
+          }
+        });
     }
   }
 }

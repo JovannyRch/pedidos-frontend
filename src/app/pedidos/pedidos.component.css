@@ -1,0 +1,25 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.container {
+  min-height: 90vh;
+  width: 100%;
+}
+
+.title {
+  margin-left: 4px;
+}
+
+.logo {
+  margin-left: 4px;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
+  font-family: "Roboto", sans-serif;
+}
