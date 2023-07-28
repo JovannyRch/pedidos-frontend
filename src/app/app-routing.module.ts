@@ -15,6 +15,7 @@ const routes: Routes = [
   { path: 'pedidos', component: PedidosComponent },
   { path: 'productos', component: ProductosComponent },
   { path: 'usuarios', component: UsuariosComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 
 @NgModule({

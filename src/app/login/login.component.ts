@@ -1,7 +1,6 @@
 // login.component.ts
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,35 +9,20 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  loginForm: FormGroup;
-  errorMessage: string = '';
+  passwordErrorMessage: string = '';
+  emailErrorMessage: string = '';
+  passwordValue: string = '';
+  emailValue: string = '';
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private http: HttpClient,
-    private router: Router
-  ) {
-    this.loginForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required],
-    });
-  }
-
-  get emailErrors() {
-    const emailControl = this.loginForm.get('email');
-    return (emailControl?.touched && emailControl.errors) || {};
-  }
-
-  get passwordErrors() {
-    const passwordControl = this.loginForm.get('password');
-    return (passwordControl?.touched && passwordControl.errors) || {};
-  }
+  constructor(private http: HttpClient, private router: Router) {}
 
   onSubmit() {
-    this.errorMessage = '';
-    if (this.loginForm.valid) {
+    if (this.validInputs()) {
       this.http
-        .post('http://localhost:8000/api/login', this.loginForm.value)
+        .post('http://localhost:8000/api/login', {
+          email: this.emailValue,
+          password: this.passwordValue,
+        })
         .subscribe(
           (response: any) => {
             if (response?.status === 1) {
@@ -54,8 +38,41 @@ export class LoginComponent {
             // Handle the HTTP request error here
           }
         );
-    } else {
-      this.errorMessage = 'Formulario inválido';
     }
+  }
+
+  validInputs() {
+    let hasErrors = false;
+    this.emailErrorMessage = '';
+    this.passwordErrorMessage = '';
+    if (this.emailValue === '') {
+      this.emailErrorMessage = 'El email es requerido';
+      hasErrors = true;
+    }
+
+    if (this.passwordValue === '') {
+      this.passwordErrorMessage = 'La contraseña es requerida';
+      hasErrors = true;
+    }
+
+    if (hasErrors) return false;
+
+    //Check if email is valid
+    const emailRegex = /\S+@\S+\.\S+/;
+    if (!emailRegex.test(this.emailValue)) {
+      this.emailErrorMessage = 'El email no es válido';
+      hasErrors = true;
+    }
+
+    //Password length must be greater than 6
+    if (this.passwordValue.length < 6) {
+      this.passwordErrorMessage =
+        'La contraseña debe tener al menos 6 caracteres';
+      hasErrors = true;
+    }
+
+    if (hasErrors) return false;
+
+    return true;
   }
 }

@@ -21,6 +21,11 @@ export class HomeComponent {
   constructor(private router: Router, private http: HttpClient) {}
 
   ngOnInit(): void {
+    //If user is not logged in, redirect to login page
+    if (!localStorage.getItem('user')) {
+      this.router.navigate(['/login']);
+    }
+
     this.isLoading = true;
     this.http.get<Counts>('http://localhost:8000/api/counts').subscribe({
       next: (counts) => {
