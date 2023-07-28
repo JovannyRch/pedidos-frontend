@@ -1,10 +1,18 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav mode="over">
     <mat-nav-list>
-      <a mat-list-item [routerLink]="['/home']">Dashboard</a>
-      <a mat-list-item [routerLink]="['/usuarios']">Usuarios</a>
-      <a mat-list-item [routerLink]="['/pedidos']">Pedidos</a>
-      <a mat-list-item [routerLink]="['/productos']">Productos</a>
+      <a mat-list-item [routerLink]="['/home']">
+        <mat-icon>dashboard</mat-icon> Dashboard
+      </a>
+      <a mat-list-item [routerLink]="['/usuarios']">
+        <mat-icon>people</mat-icon> Usuarios
+      </a>
+      <a mat-list-item [routerLink]="['/pedidos']">
+        <mat-icon>shopping_cart</mat-icon> Pedidos
+      </a>
+      <a mat-list-item [routerLink]="['/productos']">
+        <mat-icon>inventory</mat-icon> Productos
+      </a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -21,7 +29,10 @@
     </mat-toolbar>
     <div class="container">
       <div class="title-container">
-        <h1>Dashboard</h1>
+        <div class="page-title">Dashboard</div>
+        <div class="description">
+          Bienvenido a la sección de administración de la cremería.
+        </div>
       </div>
       <div class="loading-container">
         <mat-progress-spinner
@@ -30,33 +41,52 @@
         ></mat-progress-spinner>
       </div>
 
-      <div class="card-container" *ngIf="!isLoading">
-        <mat-card class="dashboard-card">
-          <mat-card-header>
-            <mat-card-title>Total de Productos</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <p>{{ totalProductos }}</p>
-          </mat-card-content>
-        </mat-card>
-
-        <mat-card class="dashboard-card">
-          <mat-card-header>
-            <mat-card-title>Total de Usuarios</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <p>{{ totalUsuarios }}</p>
-          </mat-card-content>
-        </mat-card>
-
-        <mat-card class="dashboard-card">
-          <mat-card-header>
-            <mat-card-title>Total de Pedidos</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <p>{{ totalPedidos }}</p>
-          </mat-card-content>
-        </mat-card>
+      <div class="cards-container" *ngIf="!isLoading">
+        <div class="card">
+          <div class="users-icon-container">
+            <mat-icon class="users-icon">people</mat-icon>
+          </div>
+          <div class="card-info">
+            <div class="card-title">Usuarios</div>
+            <div class="card-value">{{ totalUsuarios }}</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="card">
+          <div class="users-icon-container" style="background-color: #fff2e9">
+            <mat-icon class="products-icon">inventory</mat-icon>
+          </div>
+          <div class="card-info">
+            <div class="card-title">Productos</div>
+            <div class="card-value">{{ totalProductos }}</div>
+          </div>
+        </div>
+        <div class="divider"></div>
+        <div class="card">
+          <div class="users-icon-container" style="background-color: #ffebef">
+            <mat-icon class="orders-icon">shopping_cart</mat-icon>
+          </div>
+          <div class="card-info">
+            <div class="card-title">Pedidos</div>
+            <div class="card-value">{{ totalPedidos }}</div>
+          </div>
+        </div>
+      </div>
+      <div class="chart-container">
+        <ngx-charts-line-chart
+          [view]="view"
+          scheme="vivid"
+          [results]="lineChartData"
+          [xAxis]="xAxis"
+          [yAxis]="yAxis"
+          [legend]="legend"
+          [showXAxisLabel]="showXAxisLabel"
+          [showYAxisLabel]="showYAxisLabel"
+          [xAxisLabel]="xAxisLabel"
+          [yAxisLabel]="yAxisLabel"
+          [timeline]="timeline"
+        >
+        </ngx-charts-line-chart>
       </div>
     </div>
   </mat-sidenav-content>

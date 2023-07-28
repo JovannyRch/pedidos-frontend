@@ -1,10 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
 interface Counts {
   users: number;
   products: number;
   orders: number;
+  orders_last_7_days: any[];
 }
 
 @Component({
@@ -17,6 +19,28 @@ export class HomeComponent {
   totalProductos: number = 0;
   totalPedidos: number = 0;
   isLoading: boolean = false;
+
+  view: [number, number] = [700, 400];
+
+  // options
+  legend: boolean = true;
+  showLabels: boolean = true;
+  animations: boolean = true;
+  xAxis: boolean = true;
+  yAxis: boolean = true;
+  showYAxisLabel: boolean = true;
+  showXAxisLabel: boolean = true;
+  xAxisLabel: string = 'Día';
+  yAxisLabel: string = 'Pedidos';
+  timeline: boolean = true;
+
+  // data goes here
+  public lineChartData: any[] = [
+    {
+      name: 'Pedidos',
+      series: [],
+    },
+  ];
 
   constructor(private router: Router, private http: HttpClient) {}
 
@@ -32,6 +56,12 @@ export class HomeComponent {
         this.totalUsuarios = counts.users;
         this.totalProductos = counts.products;
         this.totalPedidos = counts.orders;
+        this.lineChartData = [
+          {
+            name: 'Pedidos',
+            series: counts.orders_last_7_days,
+          },
+        ];
         this.isLoading = false;
       },
       error: (error) => {

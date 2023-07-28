@@ -4,7 +4,8 @@
 
 .container {
   min-height: 90vh;
-  width: 100%;
+  width: --webkit-fill-available;
+  padding: 24px 40px;
 }
 
 .title {
@@ -45,9 +46,92 @@
 
 .title-container {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  margin-bottom: 24px;
+}
+
+.page-title {
+  font-family: "Roboto", sans-serif;
+  color: #15192c;
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.563px;
+  margin-left: 0;
+}
+
+.description {
+  color: #92959e;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.cards-container {
+  width: --webkit-fill-available;
+  border-radius: 8px;
+  height: 105.582px;
+  border: 1px solid #e0e0e0;
+  margin-top: 35px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 0 28px;
+}
+
+.card {
+  display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 24px;
+  padding: 20px;
+  gap: 12px;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.card-title {
+  color: #92959e;
   font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.card-value {
+  color: #15192c;
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.users-icon-container {
+  border-radius: 11.262px;
+  background: #eaf9ff;
+  width: 44.344px;
+  height: 44.344px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.divider {
+  width: 0.704px;
+  height: 57.718px;
+  background: #ececee;
+}
+
+.chart-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 36px;
 }
