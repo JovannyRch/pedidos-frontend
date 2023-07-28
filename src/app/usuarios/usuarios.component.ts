@@ -45,7 +45,6 @@ export class UsuariosComponent {
   getUsers() {
     this.http.get<User[]>('http://localhost:8000/api/users').subscribe({
       next: (users) => {
-        console.log('users', users);
         this.dataSource = new MatTableDataSource(users);
         this.dataSource.paginator = this.paginator;
       },

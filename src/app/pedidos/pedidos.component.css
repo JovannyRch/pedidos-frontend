@@ -5,6 +5,8 @@
 .container {
   min-height: 90vh;
   width: 100%;
+  padding: 24px 40px;
+  background-color: #edeae4;
 }
 
 .title {
@@ -22,4 +24,8 @@
   justify-content: center;
   margin-bottom: 24px;
   font-family: "Roboto", sans-serif;
+}
+
+.mat-drawer {
+  margin-top: 65px;
 }

@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { ProductFormDialogComponentComponent } from '../product-form-dialog-component/product-form-dialog-component.component';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { Order } from '../pedidos/pedidos.component';
 
 interface Product {
   id: number;

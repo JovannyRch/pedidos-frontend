@@ -29,6 +29,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ProductFormDialogComponentComponent } from './product-form-dialog-component/product-form-dialog-component.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { OrderFormDialogComponent } from './order-form-dialog/order-form-dialog.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     UsuariosComponent,
     UserFormDialogComponent,
     ProductFormDialogComponentComponent,
+    OrderFormDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +66,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     MatFormFieldModule,
     MatInputModule,
     NgxChartsModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
