@@ -6,6 +6,7 @@
   min-height: 90vh;
   width: --webkit-fill-available;
   padding: 24px 40px;
+  background-color: #edeae4;
 }
 
 .title {
@@ -134,4 +135,50 @@
   display: flex;
   justify-content: center;
   margin-top: 36px;
+
+  border-radius: 16.893px;
+  background: #fff;
+
+  padding: 24px 26px;
+}
+
+.chart-title {
+  color: #15192c;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.338px;
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.orders-chart-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.list-container {
+  flex: 1;
+}
+
+.top-products-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.top-product {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  border-radius: 8px;
+  background: #fff;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #ececee;
 }

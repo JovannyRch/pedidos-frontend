@@ -7,6 +7,7 @@ interface Counts {
   products: number;
   orders: number;
   orders_last_7_days: any[];
+  top_products: any[];
 }
 
 @Component({
@@ -33,6 +34,8 @@ export class HomeComponent {
   xAxisLabel: string = 'Día';
   yAxisLabel: string = 'Pedidos';
   timeline: boolean = true;
+
+  public topProducts: any[] = [];
 
   // data goes here
   public lineChartData: any[] = [
@@ -62,6 +65,8 @@ export class HomeComponent {
             series: counts.orders_last_7_days,
           },
         ];
+        this.topProducts = counts.top_products;
+
         this.isLoading = false;
       },
       error: (error) => {

@@ -73,20 +73,34 @@
         </div>
       </div>
       <div class="chart-container">
-        <ngx-charts-line-chart
-          [view]="view"
-          scheme="vivid"
-          [results]="lineChartData"
-          [xAxis]="xAxis"
-          [yAxis]="yAxis"
-          [legend]="legend"
-          [showXAxisLabel]="showXAxisLabel"
-          [showYAxisLabel]="showYAxisLabel"
-          [xAxisLabel]="xAxisLabel"
-          [yAxisLabel]="yAxisLabel"
-          [timeline]="timeline"
-        >
-        </ngx-charts-line-chart>
+        <div class="orders-chart-container">
+          <div class="chart-title">Órdenes en los últimos 7 días</div>
+          <ngx-charts-line-chart
+            [view]="view"
+            scheme="vivid"
+            [results]="lineChartData"
+            [xAxis]="xAxis"
+            [yAxis]="yAxis"
+            [legend]="legend"
+            [showXAxisLabel]="showXAxisLabel"
+            [showYAxisLabel]="showYAxisLabel"
+            [xAxisLabel]="xAxisLabel"
+            [yAxisLabel]="yAxisLabel"
+            [timeline]="timeline"
+          >
+          </ngx-charts-line-chart>
+        </div>
+        <div class="list-container">
+          <!-- List of top products -->
+          <div class="chart-title">Productos con más pedidos</div>
+
+          <div class="top-products-container">
+            <div class="top-product" *ngFor="let product of topProducts">
+              <div class="product-name">{{ product.name }}</div>
+              <div class="product-quantity">{{ product.orders_count }}</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </mat-sidenav-content>
