@@ -45,7 +45,7 @@ export class RegisterComponent {
     const detailsData = {
       user_id: 0,
       address: this.address,
-      phone_number: this.phone,
+      phone_number: `+52${this.phone}`,
     };
 
     this.http
