@@ -36,7 +36,7 @@ export class OrderFormDialogComponent {
 
   ngOnInit() {
     this.http
-      .get<Product[]>('http://localhost:8000/api/products')
+      .get<Product[]>('http://159.223.207.177:8000/api/products')
       .subscribe((products) => {
         this.products = products;
       });
@@ -71,7 +71,7 @@ export class OrderFormDialogComponent {
     };
 
     this.http
-      .post('http://localhost:8000/api/orders', orderData)
+      .post('http://159.223.207.177:8000/api/orders', orderData)
       .subscribe((response: any) => {
         if (response?.status === 1) {
           this.dialogRef.close();

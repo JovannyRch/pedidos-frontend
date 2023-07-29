@@ -43,7 +43,7 @@ export class UsuariosComponent {
   }
 
   getUsers() {
-    this.http.get<User[]>('http://localhost:8000/api/users').subscribe({
+    this.http.get<User[]>('http://159.223.207.177:8000/api/users').subscribe({
       next: (users) => {
         this.dataSource = new MatTableDataSource(users);
         this.dataSource.paginator = this.paginator;
@@ -78,15 +78,17 @@ export class UsuariosComponent {
   deleteUser(id: number): void {
     if (confirm('¿Está seguro que desea eliminar el usuario?')) {
       //Make a delete request
-      this.http.delete(`http://localhost:8000/api/users/${id}`).subscribe({
-        next: (response) => {
-          console.log('response', response);
-          this.getUsers();
-        },
-        error: (error) => {
-          console.error('Error al eliminar el usuario:', error);
-        },
-      });
+      this.http
+        .delete(`http://159.223.207.177:8000/api/users/${id}`)
+        .subscribe({
+          next: (response) => {
+            console.log('response', response);
+            this.getUsers();
+          },
+          error: (error) => {
+            console.error('Error al eliminar el usuario:', error);
+          },
+        });
     }
   }
   addUser(): void {

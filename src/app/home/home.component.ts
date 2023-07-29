@@ -54,7 +54,7 @@ export class HomeComponent {
     }
 
     this.isLoading = true;
-    this.http.get<Counts>('http://localhost:8000/api/counts').subscribe({
+    this.http.get<Counts>('http://159.223.207.177:8000/api/counts').subscribe({
       next: (counts) => {
         this.totalUsuarios = counts.users;
         this.totalProductos = counts.products;

@@ -64,12 +64,12 @@ export class UserFormDialogComponent {
     };
 
     this.http
-      .put(`http://localhost:8000/api/users/${userId}`, userData)
+      .put(`http://159.223.207.177:8000/api/users/${userId}`, userData)
       .subscribe((response: any) => {
         if (response?.status === 1) {
           this.http
             .put(
-              `http://localhost:8000/api/udetails/${this.user.user_detail.id}`,
+              `http://159.223.207.177:8000/api/udetails/${this.user.user_detail.id}`,
               detailsData
             )
             .subscribe((response: any) => {
@@ -101,14 +101,14 @@ export class UserFormDialogComponent {
     };
 
     this.http
-      .post('http://localhost:8000/api/users', userData)
+      .post('http://159.223.207.177:8000/api/users', userData)
       .subscribe((response: any) => {
         if (response?.status === 1) {
           const userId = response.user_id;
           detailsData.user_id = userId;
 
           this.http
-            .post('http://localhost:8000/api/udetails', detailsData)
+            .post('http://159.223.207.177:8000/api/udetails', detailsData)
             .subscribe((response: any) => {
               if (response?.status === 1) {
                 alert('Usuario registrado correctamente');

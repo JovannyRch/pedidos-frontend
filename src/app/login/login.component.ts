@@ -19,7 +19,7 @@ export class LoginComponent {
   onSubmit() {
     if (this.validInputs()) {
       this.http
-        .post('http://localhost:8000/api/login', {
+        .post('http://159.223.207.177:8000/api/login', {
           email: this.emailValue,
           password: this.passwordValue,
         })

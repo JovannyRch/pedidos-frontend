@@ -49,7 +49,7 @@ export class ProductosComponent {
 
   loadProducts() {
     this.http
-      .get<Product[]>('http://localhost:8000/api/products')
+      .get<Product[]>('http://159.223.207.177:8000/api/products')
       .subscribe((data: Product[]) => {
         this.dataSource.data = data;
       });
@@ -77,7 +77,7 @@ export class ProductosComponent {
   deleteProduct(id: number) {
     if (!confirm('¿Estás seguro de eliminar este producto?')) return;
     this.http
-      .delete(`http://localhost:8000/api/products/${id}`)
+      .delete(`http://159.223.207.177:8000/api/products/${id}`)
       .subscribe((data) => {
         this.loadProducts();
       });

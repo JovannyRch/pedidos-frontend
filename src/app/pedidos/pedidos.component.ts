@@ -94,7 +94,7 @@ export class PedidosComponent {
 
   getOrders() {
     this.http
-      .get<Order[]>('http://localhost:8000/api/orders')
+      .get<Order[]>('http://159.223.207.177:8000/api/orders')
       .subscribe((orders) => {
         this.orders = orders;
         this.dataSource = new MatTableDataSource(orders);
@@ -104,7 +104,7 @@ export class PedidosComponent {
   deleteOrder(order: Order) {
     if (!confirm('¿Estás seguro de eliminar este pedido?')) return;
     this.http
-      .delete(`http://localhost:8000/api/orders/${order.id}`)
+      .delete(`http://159.223.207.177:8000/api/orders/${order.id}`)
       .subscribe((data) => {
         this.getOrders();
       });

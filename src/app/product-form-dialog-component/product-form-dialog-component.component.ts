@@ -49,7 +49,7 @@ export class ProductFormDialogComponentComponent {
       price: this.formGroup.get('price')?.value,
     };
     this.http
-      .put(`http://localhost:8000/api/products/${productId}`, productData)
+      .put(`http://159.223.207.177:8000/api/products/${productId}`, productData)
       .subscribe((response: any) => {
         if (response?.status === 1) {
           this.dialogRef.close();
@@ -66,7 +66,7 @@ export class ProductFormDialogComponentComponent {
       price: this.formGroup.get('price')?.value,
     };
     this.http
-      .post('http://localhost:8000/api/products', data)
+      .post('http://159.223.207.177:8000/api/products', data)
       .subscribe((response: any) => {
         if (response?.status === 1) {
           this.dialogRef.close();
